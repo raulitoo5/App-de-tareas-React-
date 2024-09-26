@@ -35,6 +35,29 @@ function App() {
    return todo.text.toLowerCase().includes(buscador.toLowerCase());
   })
 
+  const completarTodo = (text) => {
+    // Copiamos el array de todos en nuevosTodos 
+    // El operador ... es para que se copie todo el contendio
+    const nuevosTodos = [...todos];
+    // Con esta funcion devolvemos el índice del todo que corresponda
+    // Para cada todo verificamos si su texto coincide con el que texto
+    // que le hemos pasado que es lo que estamos buscando
+    const todoIndex = nuevosTodos.findIndex(
+      (todo) => todo.text == text
+    );
+
+    nuevosTodos[todoIndex].completado = 'true';
+    setTodos(nuevosTodos);
+
+  }
+
+  const deleteTodo = (text) => {
+    const nuevosTodos = todos.filter(
+      (todo) => todo.text != text
+    )
+    setTodos(nuevosTodos);
+  }
+
   console.log("el usuario escribe: ", buscador);
   return (
     <React.Fragment>
@@ -53,7 +76,10 @@ function App() {
           <TodoItem 
             key={todo.text} 
             text={todo.text}
-            completado={todo.completado} />
+            completado={todo.completado} 
+            onComplete={ () => completarTodo(todo.text)}
+            onDelete={ () => deleteTodo(todo.text)}
+          />
         ))}
       </ToDoList>
 
