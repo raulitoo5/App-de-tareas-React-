@@ -1,6 +1,18 @@
-function ToDoSearch(){
+import { useState } from 'react';
+import './ToDoSearch.css';
+import React from 'react';
+ 
+function ToDoSearch({buscador, setBuscador}){
+
     return(
-        <input placeholder="Cortar cebolla" />
+        <input 
+            className='TodoSearch' 
+            placeholder="Cortar cebolla"
+            value={buscador}
+            onChange={(event) => {
+                setBuscador(event.target.value);
+            }}   
+        />
     );
 }
 
