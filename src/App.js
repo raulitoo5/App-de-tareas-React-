@@ -1,25 +1,20 @@
-import logo from './platzi.webp';
 import './App.css';
-import { ToDoCounter } from './ToDoCounter';
-import { ToDoList } from './ToDoList';
-import { ToDoSearch } from './ToDoSearch.js';
-import { TodoItem } from './ToDoItem.js';
-import { CreateTodoButton } from './CreateToDoButton.js';
+import { ToDoCounter } from './components/ToDoCounter/ToDoCounter.js';
+import { ToDoList } from './components/ToDoList/ToDoList.js';
+import { ToDoSearch } from './components/ToDoSearch/ToDoSearch.js';
+import { TodoItem } from './components/ToDoItem/ToDoItem.js';
+import { CreateTodoButton } from './components/CreateToDoButton/CreateToDoButton.js';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-
-const defaultToDos = [
-  {text: 'Hacer la cena', completado: false},
-  {text: 'Imprimir', completado: false},
-  {text: 'Lavar la ropa', completado: true},
-  {text: 'Dormir', completado: true}
-
-
-]
+import { error, loading, useLocalStorage } from './hooks/useLocalStorage.js';
+import { TodosLoading } from './components/TodosLoading/TodosLoading.js';
 
 function App() {
 
-  const [todos, setTodos] = useState(defaultToDos);
+  // Lo de los puntos es para renombrar los elementos del objeto
+  // ya que si no ponemos : tenemos que poner el mismo nombre
+  // que hemos especificado que iba a devolver el hook
+  const {item: todos, actualizarItem: actualizarTodos, loading, error} = useLocalStorage('todos_v1',[]);
   const [buscador, setBuscador] = useState('');
 
   // Con la función filter y esas condiciones estamos obteniendo
@@ -47,15 +42,14 @@ function App() {
     );
 
     nuevosTodos[todoIndex].completado = 'true';
-    setTodos(nuevosTodos);
-
+    actualizarTodos(nuevosTodos);
   }
 
   const deleteTodo = (text) => {
     const nuevosTodos = todos.filter(
       (todo) => todo.text != text
     )
-    setTodos(nuevosTodos);
+    actualizarTodos(nuevosTodos);
   }
 
   console.log("el usuario escribe: ", buscador);
@@ -72,6 +66,16 @@ function App() {
       />
 
       <ToDoList>
+        {loading && 
+        <>
+          <TodosLoading />
+          <TodosLoading />
+          <TodosLoading />
+        </>
+        }
+        {error && <p> Error: {error} </p>}
+        {(!loading && todosBuscados.length ==0) && <p> Crea tu primer todo </p>}
+        
         {todosBuscados.map(todo => (
           <TodoItem 
             key={todo.text} 
