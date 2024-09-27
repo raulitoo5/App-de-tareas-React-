@@ -1,0 +1,12 @@
+import { useState } from 'react';
+import './TodosError.css';
+import React from 'react';
+ 
+function TodosError(){
+
+    return(
+        <p> Error...</p>
+    );
+}
+
+export {TodosError};
