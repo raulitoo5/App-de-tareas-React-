@@ -7,7 +7,6 @@ const TodoContext = React.createContext();
 // Esta función la creamos para que sea más cómodos y no tengamos que llamar a 
 // TodoContext.Provider todo el rato
 function TodoProvider({children}) {
-    console.log("jjjjjj");
 
     // Lo de los puntos es para renombrar los elementos del objeto
     // ya que si no ponemos : tenemos que poner el mismo nombre

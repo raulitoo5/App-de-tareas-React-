@@ -1,13 +1,12 @@
 import './CreateToDoButton.css';
 import React from 'react';
 
-function CreateTodoButton(){
+function CreateTodoButton({setOpenModal}){
     return(
         <button 
             className='CreateToDoButton'
             onClick={
-                (event) => { console.log("le diste click al boton");
-                }
+                () => {setOpenModal (state => !state)}
             }
             >+</button>
     );

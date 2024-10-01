@@ -8,7 +8,7 @@ import React from 'react';
 import { TodosLoading } from './skeletons/TodosLoading/TodosLoading.js';
 import { TodoProvider } from './TodoContext/TodoContext.js';
 import { TodoContext } from './TodoContext/TodoContext.js';
-import Modal from './Modal/Modal.js';
+import {Modal} from './Modal/Modal.js';
 
 function AppUI() {
 
@@ -50,13 +50,16 @@ function AppUI() {
             />
           ))}
         </ToDoList>
-        <CreateTodoButton />
+        <CreateTodoButton 
+            setOpenModal={setOpenModal}
+            openModal={openModal}
+        />
 
-        {openModal && (<Modal>
+        {openModal && (
+        <Modal>
           La funcionalidad de crear TODO
         </Modal>
         )}
-
       </>
   );
 }
