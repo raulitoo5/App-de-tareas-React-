@@ -12,6 +12,7 @@ function TodoProvider({children}) {
     // que hemos especificado que iba a devolver el hook
     const { item: todos, actualizarItem: actualizarTodos, loading, error } = useLocalStorage('todos_v1', []);
     const [buscador, setBuscador] = useState('');
+    const [openModal, setOpenModal] = useState(false);
 
     // Con la función filter y esas condiciones estamos obteniendo
     // todos los todos con el campo completado a true
@@ -51,13 +52,16 @@ function TodoProvider({children}) {
         <TodoContext.Provider value={{
             loading,
             error,
-            completarTodo,
             todosBuscados,
             totalTodos,
+            todosCompletados,
             actualizarTodos,
             buscador,
+            setBuscador,
             completarTodo,
             deleteTodo,
+            openModal,
+            setOpenModal
         }}>
             {children}
         </TodoContext.Provider>
