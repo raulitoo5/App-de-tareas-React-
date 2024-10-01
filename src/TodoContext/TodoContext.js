@@ -52,6 +52,7 @@ function TodoProvider({children}) {
             loading,
             error,
             completarTodo,
+            todosBuscados,
             totalTodos,
             actualizarTodos,
             buscador,

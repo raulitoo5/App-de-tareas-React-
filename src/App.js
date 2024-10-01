@@ -14,51 +14,56 @@ import { TodoContext } from './TodoContext/TodoContext.js';
 function App() {
 
   return (
-    <React.Fragment>
-      <ToDoCounter />
+    <TodoProvider>
 
-      <ToDoSearch />
+      <React.Fragment>
+        <ToDoCounter />
 
-      <TodoContext.Consumer>
-        {/*         Esto lo hacemos porque los contexto usan las renders functions por lo que tenemos
+        <ToDoSearch />
+
+        <TodoContext.Consumer>
+          {/*         Esto lo hacemos porque los contexto usan las renders functions por lo que tenemos
         que hacer un arrow function para que se renderize dentro del contexto. */}
 
-        {({
-          loading,
-          error,
-          todosBuscados,
-          completarTodo,
-          deleteTodo,
-        }) => (
-          <ToDoList>
-            {loading &&
-              <>
-                <TodosLoading />
-                <TodosLoading />
-                <TodosLoading />
-              </>
-            }
-            {error && <p> Error: {error} </p>}
-            {(!loading && todosBuscados.length == 0) && <p> Crea tu primer todo </p>}
+          {({
+            loading,
+            error,
+            todosBuscados,
+            completarTodo,
+            deleteTodo,
+          }) => (
+            <ToDoList>
+              {loading &&
+                <>
+                  <TodosLoading />
+                  <TodosLoading />
+                  <TodosLoading />
+                </>
+              }
+              {error && <p> Error: {error} </p>}
+              {(!loading && todosBuscados.length == 0) && <p> Crea tu primer todo </p>}
 
-            {todosBuscados.map(todo => (
-              <TodoItem
-                key={todo.text}
-                text={todo.text}
-                completado={todo.completado}
-                onComplete={() => completarTodo(todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
-              />
-            ))}
-          </ToDoList>
-        )}
+{console.log("todosbuscados", todosBuscados)}
+              {todosBuscados.map(todo => (
+                <TodoItem
+                  key={todo.text}
+                  text={todo.text}
+                  completado={todo.completado}
+                  onComplete={() => completarTodo(todo.text)}
+                  onDelete={() => deleteTodo(todo.text)}
+                />
+              ))}
+            </ToDoList>
+          )}
 
-      </TodoContext.Consumer>
+        </TodoContext.Consumer>
 
 
-      <CreateTodoButton />
-    </React.Fragment>
+        <CreateTodoButton />
+      </React.Fragment>
+    </TodoProvider>
   );
+
 }
 
 export default App;
