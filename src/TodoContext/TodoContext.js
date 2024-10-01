@@ -7,6 +7,8 @@ const TodoContext = React.createContext();
 // Esta función la creamos para que sea más cómodos y no tengamos que llamar a 
 // TodoContext.Provider todo el rato
 function TodoProvider({children}) {
+    console.log("jjjjjj");
+
     // Lo de los puntos es para renombrar los elementos del objeto
     // ya que si no ponemos : tenemos que poner el mismo nombre
     // que hemos especificado que iba a devolver el hook
@@ -14,6 +16,7 @@ function TodoProvider({children}) {
     const [buscador, setBuscador] = useState('');
     const [openModal, setOpenModal] = useState(false);
 
+    console.log("jdñasjda: ", loading);
     // Con la función filter y esas condiciones estamos obteniendo
     // todos los todos con el campo completado a true
     // Con la doble negación estamos conviertiendo el valor a boolenao
@@ -25,7 +28,7 @@ function TodoProvider({children}) {
     // la condición
     const todosBuscados = todos.filter((todo) => {
         return todo.text.toLowerCase().includes(buscador.toLowerCase());
-    })
+    });
 
     const completarTodo = (text) => {
         // Copiamos el array de todos en nuevosTodos 
@@ -40,14 +43,15 @@ function TodoProvider({children}) {
 
         nuevosTodos[todoIndex].completado = 'true';
         actualizarTodos(nuevosTodos);
-    }
+    };
 
     const deleteTodo = (text) => {
         const nuevosTodos = todos.filter(
             (todo) => todo.text != text
         )
         actualizarTodos(nuevosTodos);
-    }
+    };
+
     return (
         <TodoContext.Provider value={{
             loading,
@@ -65,16 +69,7 @@ function TodoProvider({children}) {
         }}>
             {children}
         </TodoContext.Provider>
-    )
+    );
 }
 
-function TodoConsumer() {
-
-    return (
-        <TodoContext.Consumer>
-
-        </TodoContext.Consumer>
-    )
-}
-
-export { TodoContext, TodoConsumer, TodoProvider };
+export { TodoContext, TodoProvider };
