@@ -6,7 +6,7 @@ const TodoContext = React.createContext();
 
 // Esta función la creamos para que sea más cómodos y no tengamos que llamar a 
 // TodoContext.Provider todo el rato
-function TodoProvider({children}) {
+function TodoProvider({ children }) {
 
     // Lo de los puntos es para renombrar los elementos del objeto
     // ya que si no ponemos : tenemos que poner el mismo nombre
@@ -15,7 +15,6 @@ function TodoProvider({children}) {
     const [buscador, setBuscador] = useState('');
     const [openModal, setOpenModal] = useState(false);
 
-    console.log("jdñasjda: ", loading);
     // Con la función filter y esas condiciones estamos obteniendo
     // todos los todos con el campo completado a true
     // Con la doble negación estamos conviertiendo el valor a boolenao
@@ -25,9 +24,14 @@ function TodoProvider({children}) {
 
     // Con filter se crea un nuevo array con los elementos que cumplan
     // la condición
-    const todosBuscados = todos.filter((todo) => {
-        return todo.text.toLowerCase().includes(buscador.toLowerCase());
-    });
+    const todosBuscados = todos.filter(
+        (todo) => {
+             const todoText = todo.text.toLowerCase(); 
+             const searchText = buscador.toLowerCase(); 
+             
+             return todoText.includes(searchText); 
+            }
+        );
 
     const completarTodo = (text) => {
         // Copiamos el array de todos en nuevosTodos 
@@ -51,6 +55,15 @@ function TodoProvider({children}) {
         actualizarTodos(nuevosTodos);
     };
 
+    const addTodo = (texto) => {
+        const nuevosTodos = [...todos];
+        nuevosTodos.push({
+            text: texto,
+            completado: false,
+        });
+        actualizarTodos(nuevosTodos);
+    }
+
     return (
         <TodoContext.Provider value={{
             loading,
@@ -64,7 +77,8 @@ function TodoProvider({children}) {
             completarTodo,
             deleteTodo,
             openModal,
-            setOpenModal
+            setOpenModal,
+            addTodo
         }}>
             {children}
         </TodoContext.Provider>

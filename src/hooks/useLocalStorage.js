@@ -8,7 +8,7 @@ function useLocalStorage(itemName, initalValue) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
+  useEffect( () => {
     setTimeout(() => {
       try {
         const localStorageItem = localStorage.getItem(itemName);
@@ -31,7 +31,6 @@ function useLocalStorage(itemName, initalValue) {
       }
     }, 2000);
   }, []);
-
 
   // Funcion para guardar los cambios en Storage
   const actualizarItem = (newItem) => {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import './ToDoSearch.css';
 import React from 'react';
 import { TodoContext } from '../../TodoContext/TodoContext';
@@ -8,7 +8,8 @@ function ToDoSearch(){
     const{
         buscador,
         setBuscador
-    } = React.useContext(TodoContext);
+    } = useContext(TodoContext);
+    
     return(
         <input 
             className='TodoSearch' 

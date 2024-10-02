@@ -6,9 +6,9 @@ import { TodoItem } from './components/ToDoItem/ToDoItem.js';
 import { CreateTodoButton } from './components/CreateToDoButton/CreateToDoButton.js';
 import React from 'react';
 import { TodosLoading } from './skeletons/TodosLoading/TodosLoading.js';
-import { TodoProvider } from './TodoContext/TodoContext.js';
 import { TodoContext } from './TodoContext/TodoContext.js';
 import {Modal} from './Modal/Modal.js';
+import { TodoForm } from './components/TodoForm/TodoForm.js';
 
 function AppUI() {
 
@@ -19,10 +19,8 @@ function AppUI() {
     completarTodo,
     deleteTodo,
     openModal,
-    setOpenModal
+    setOpenModal,
   } = React.useContext(TodoContext);
-
-  console.log("loading: ", loading);
 
   return (
       <>
@@ -57,7 +55,7 @@ function AppUI() {
 
         {openModal && (
         <Modal>
-          La funcionalidad de crear TODO
+          <TodoForm />
         </Modal>
         )}
       </>
