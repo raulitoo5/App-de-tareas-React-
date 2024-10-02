@@ -9,9 +9,7 @@ function ToDoCounter(){
       totalTodos,
     } = React.useContext(TodoContext);
 
-    console.log("en counter: ", totalTodos);
     return(
-      console.log("iajsf", totalTodos),
       <h1 className='ToDoCounter'>
         
         Has completado <span>{todosCompletados}</span> de <span>{totalTodos}</span> TODOS
