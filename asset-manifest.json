@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/css/main.a8baceab.chunk.css",
+    "main.js": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/js/main.9b7f7f82.chunk.js",
+    "main.js.map": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/js/main.9b7f7f82.chunk.js.map",
+    "runtime-main.js": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/js/runtime-main.06782529.js",
+    "runtime-main.js.map": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/js/runtime-main.06782529.js.map",
+    "static/js/2.c84e8888.chunk.js": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/js/2.c84e8888.chunk.js",
+    "static/js/2.c84e8888.chunk.js.map": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/js/2.c84e8888.chunk.js.map",
+    "index.html": "/Users/RCR/practicasEmpresa/curso-react-intro/build/index.html",
+    "precache-manifest.6ca8baa24accae3cad911eee02cdc370.js": "/Users/RCR/practicasEmpresa/curso-react-intro/build/precache-manifest.6ca8baa24accae3cad911eee02cdc370.js",
+    "service-worker.js": "/Users/RCR/practicasEmpresa/curso-react-intro/build/service-worker.js",
+    "static/css/main.a8baceab.chunk.css.map": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/css/main.a8baceab.chunk.css.map",
+    "static/js/2.c84e8888.chunk.js.LICENSE.txt": "/Users/RCR/practicasEmpresa/curso-react-intro/build/static/js/2.c84e8888.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.06782529.js",
+    "static/js/2.c84e8888.chunk.js",
+    "static/css/main.a8baceab.chunk.css",
+    "static/js/main.9b7f7f82.chunk.js"
+  ]
+}
